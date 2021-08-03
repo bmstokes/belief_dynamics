@@ -1,6 +1,6 @@
 v1.0.0
 
-To perform opinion dynamics simulations according to the model by Stokes et al., in 
+To perform opinion dynamics simulations according to the model in 
 "Extremism and segregation emerge naturally through collective opinion dynamics in a novel agent-based model", 
 do:
 
