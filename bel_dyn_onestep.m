@@ -1,9 +1,3 @@
-% BEL_DYN_ONESTEP updates the opinions by one time-step. 
-% Called by: bel_dyn_onesimulation.
-% Inputs: D (dimensionality of opinion space); N (number of agents); rho
-% (threshold parameter); mu (memory capacity); beta (decay of influence, 
-% always equals 0.5 in the paper); alpha (reinforcement rate); v (all 
-% opinions); i (current time-step).
 function [v_new,acceleration,Q_new] = bel_dyn_onestep(D,N,rho,mu,beta,alpha,v,i) 
 % In a vector, the elements are arranged in the following manner: 
 % the first D elements correspond to the 1st individual, then 
@@ -25,7 +19,7 @@ Q_new = zeros(N,1); % number of agents that j listens to
 %%
 for j = 1:N % for each of the N individuals
     %% calculate rho_r
-    r = sqrt(sum(v(j,:).*v(j,:))); % distance of agent j to origin
+    r = sqrt(sum( v(j, (min(i,mu)-1)*D+1 : (min(i,mu)-1)*D+D).^2 )); % distance of agent j to origin
     rho_r = rho + (1-rho)*(1-exp(-alpha*r));
     %%
     for k = 1:N % compute the distances between j and each of the others
